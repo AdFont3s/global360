@@ -128,7 +128,7 @@ Required secrets: `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_REGION`.
 - **Local state** — no S3 backend configured; add one for team use.
 - **Single NAT Gateway** — one NAT GW in AZ-a to minimise cost. A second NAT GW in AZ-b would eliminate the AZ-dependency for outbound traffic but doubles the NAT cost.
 - **No bastion / SSH** — instances are in private subnets with SSH denied at the NACL level. Use AWS Systems Manager Session Manager for shell access if needed.
-- **HTTP only** — no TLS; add ACM + HTTPS listener to the ALB for production use.
+- **HTTP only (port 80)** — the ALB currently listens on port 80 for simplicity. I'm fully aware this can be switched to HTTPS (port 443) by adding an ACM certificate and updating the ALB listener. This would add a small cost (~$0–$1 AUD/month per certificate via ACM, plus any Route 53 DNS hosting if required) but is the right approach for production.
 - **Free tier** — cost estimate below assumes outside free tier. New AWS accounts get 750 hrs/month of t3.micro free for 12 months.
 
 ---

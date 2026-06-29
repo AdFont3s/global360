@@ -174,6 +174,15 @@ Required secrets: `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_REGION`.
 | EIP (attached) | $0 | 1 | $0 |
 | **Total** | | | **~$123** |
 
-**Cost-optimised variant (under AUD 20):** Place EC2 instances in public subnets, remove the NAT Gateway, and assign public IPs. This eliminates ~$65/month in NAT costs, dropping the estimate to ~$58/month. For a further reduction, replace the ALB with a Network Load Balancer (~$18/month) or use a single EC2 behind an Elastic IP (loses HA). The architecture as designed prioritises the stated HA requirements over cost minimisation.
-
 With the 12-month free tier, EC2 cost drops to ~$0, bringing the total to ~$90 AUD/month (NAT + ALB).
+
+### Cost-optimised alternative
+
+Replace the NAT Gateway with an Internet Gateway and move EC2 instances into public subnets with public IPs. Inbound traffic is still restricted to the ALB security group — only outbound internet access changes. This eliminates ~$65 AUD/month, dropping the total to **~$58 AUD/month** (~$25 with free tier).
+
+| Resource | AUD/month |
+|---|---|
+| EC2 t3.micro ×2 | ~$33 |
+| ALB | ~$25 |
+| Internet Gateway | $0 |
+| **Total** | **~$58** |

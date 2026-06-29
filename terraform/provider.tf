@@ -1,0 +1,13 @@
+provider "aws" {
+  region = var.aws_region
+
+  # Guard: prevents accidental apply against the wrong account.
+  allowed_account_ids = [var.aws_account_id]
+
+  default_tags {
+    tags = {
+      Project     = var.project_name
+      Environment = var.environment
+    }
+  }
+}

@@ -39,3 +39,9 @@ variable "asg_desired" {
   type        = number
   default     = 2
 }
+
+variable "aws_account_id" {
+  description = "AWS account ID — set in terraform.tfvars (gitignored)"
+  type        = string
+  sensitive   = true
+}

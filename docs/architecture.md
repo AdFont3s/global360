@@ -1,5 +1,7 @@
 # Architecture Diagram
 
+![Global360 Auto-Healing Web Tier](architecture.png)
+
 ```
                           ┌─────────────────────────────────────────────────────┐
                           │                  AWS ap-southeast-2                  │

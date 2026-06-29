@@ -49,6 +49,8 @@ AWS was chosen for its mature Auto Scaling + ALB ecosystem, the widest free-tier
 
 Full diagram with security boundary table: [`docs/architecture.md`](docs/architecture.md)
 
+![Architecture](docs/architecture.png)
+
 ---
 
 ## How Self-Healing Works

@@ -147,8 +147,11 @@ All tuneable values are in `terraform/variables.tf` and overridden via `terrafor
 
 | Job | Trigger | Steps |
 |---|---|---|
-| `validate` | push + PR | `fmt -check` → `init -backend=false` → `validate` |
-| `plan` | PR only | AWS credentials → `init` → `plan` → post output as PR comment |
+| `validate` | all pushes + PRs | `fmt -check` → `init -backend=false` → `validate` |
+| `plan` | push to non-main branch + PR | AWS credentials → `init` → `plan` → post output as PR comment |
+| `apply` | push to `main` (PR merged) | AWS credentials → `init` → `apply -auto-approve` |
+
+The `apply` job uses a `production` GitHub environment — configure it in repo settings to add a manual approval gate before apply runs.
 
 Required secrets: `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_REGION`.
 
